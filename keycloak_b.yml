@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: keycloak_b
+  name: keycloak-b
   labels:
-    app: keycloak_b
+    app: keycloak-b
 spec:
   ports:
   - name: http
@@ -11,28 +11,28 @@ spec:
     nodePort: 30081
     targetPort: 8080
   selector:
-    app: keycloak_b
+    app: keycloak-b
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: keycloak_b
+  name: keycloak-b
   namespace: default
   labels:
-    app: keycloak_b
+    app: keycloak-b
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: keycloak_b
+      app: keycloak-b
   template:
     metadata:
       labels:
-        app: keycloak_b
+        app: keycloak-b
     spec:
       containers:
-      - name: keycloak_b
+      - name: keycloak-b
         image: quay.io/keycloak/keycloak:10.0.1
         env:
         - name: KEYCLOAK_USER
